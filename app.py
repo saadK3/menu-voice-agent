@@ -58,6 +58,26 @@ def calculate_item_price(item_id, modifier_ids):
 
     return round(total, 2)
 
+def get_retell_param(param_name, default=''):
+    """
+    Extract parameter from Retell AI request.
+    Retell AI wraps parameters in 'args' object.
+    """
+    # Try JSON body first - Retell AI format
+    if request.is_json and request.json:
+        # Check if Retell AI format (nested in 'args')
+        if 'args' in request.json and isinstance(request.json['args'], dict):
+            return request.json['args'].get(param_name, default)
+        # Fallback to direct parameter
+        return request.json.get(param_name, default)
+
+    # Try form data
+    if request.form:
+        return request.form.get(param_name, default)
+
+    # Try query parameters
+    return request.args.get(param_name, default)
+
 def similarity_score(str1, str2):
     """Calculate similarity between two strings (0-1)"""
     return SequenceMatcher(None, str1.lower(), str2.lower()).ratio()
@@ -151,8 +171,7 @@ def get_categories():
 @app.route('/api/get_items_by_category', methods=['POST'])
 def get_items_by_category():
     """Get all items in a specific category"""
-    data = request.json
-    category_name = data.get('category')
+    category_name = get_retell_param('category', '').strip()
 
     if not category_name:
         return jsonify({
@@ -209,20 +228,8 @@ def search_menu():
     print(f"Request Headers: {dict(request.headers)}")
     print("=" * 80)
 
-    # Try to get query from multiple sources (JSON, form data, or query params)
-    query = None
-
-    # Try JSON body first
-    if request.is_json and request.json:
-        query = request.json.get('query', '').strip()
-
-    # Try form data
-    if not query and request.form:
-        query = request.form.get('query', '').strip()
-
-    # Try query parameters as fallback
-    if not query:
-        query = request.args.get('query', '').strip()
+    # Extract query using helper function
+    query = get_retell_param('query', '').strip()
 
     print(f"EXTRACTED QUERY: '{query}'")
     print("=" * 80)
@@ -256,8 +263,7 @@ def search_menu():
 @app.route('/api/get_item_details', methods=['POST'])
 def get_item_details():
     """Get detailed information about a specific item"""
-    data = request.json
-    item_id = data.get('item_id')
+    item_id = get_retell_param('item_id', '').strip()
 
     if not item_id:
         return jsonify({
@@ -281,11 +287,16 @@ def get_item_details():
 @app.route('/api/add_to_order', methods=['POST'])
 def add_to_order():
     """Add an item to the order"""
-    data = request.json
-    session_id = data.get('session_id')
-    item_id = data.get('item_id')
-    modifier_ids = data.get('modifier_ids', [])
-    quantity = data.get('quantity', 1)
+    session_id = get_retell_param('session_id', '')
+    item_id = get_retell_param('item_id', '').strip()
+    modifier_ids = get_retell_param('modifier_ids', [])
+    quantity = get_retell_param('quantity', 1)
+
+    # Ensure quantity is an integer
+    try:
+        quantity = int(quantity)
+    except (ValueError, TypeError):
+        quantity = 1
 
     if not item_id:
         return jsonify({
@@ -335,8 +346,7 @@ def add_to_order():
 @app.route('/api/get_order_summary', methods=['POST'])
 def get_order_summary():
     """Get current order summary"""
-    data = request.json
-    session_id = data.get('session_id')
+    session_id = get_retell_param('session_id', '')
 
     if not session_id or session_id not in orders:
         return jsonify({
@@ -364,8 +374,7 @@ def get_order_summary():
 @app.route('/api/clear_order', methods=['POST'])
 def clear_order():
     """Clear/reset the order"""
-    data = request.json
-    session_id = data.get('session_id')
+    session_id = get_retell_param('session_id', '')
 
     if session_id and session_id in orders:
         del orders[session_id]
