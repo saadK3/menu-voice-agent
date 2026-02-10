@@ -1,0 +1,107 @@
+{
+  "sample_items": [
+    {
+      "id": "24a54742-47e3-4d51-b1d2-a1b7ad1e0b7e",
+      "name": "Bourekas",
+      "category": "Appetizers Sides",
+      "base_price": 2.08,
+      "description": "One delicious Boreka. Choice of potato or mushroom.",
+      "available": true,
+      "modifiers": {
+        "required": [],
+        "optional": [
+          {
+            "group_name": "Boreka Flavors",
+            "options": [
+              {
+                "id": "01a2467b-76aa-4353-b583-3a86f3acfa94",
+                "name": "Mushroom",
+                "price": 0
+              },
+              {
+                "id": "88b2ade3-b653-40a9-bef8-f30d163c2304",
+                "name": "Potato",
+                "price": 0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "20354b13-cb3f-41be-86c3-082203d3db73",
+      "name": "Garlic Knots",
+      "category": "Appetizers Sides",
+      "base_price": 0.98,
+      "description": "",
+      "available": true,
+      "modifiers": {
+        "required": [],
+        "optional": []
+      }
+    },
+    {
+      "id": "512966f2-a770-4555-ad98-5eeff653d9d4",
+      "name": "Hash Browns 1/2 Lb",
+      "category": "Appetizers Sides",
+      "base_price": 5.19,
+      "description": "",
+      "available": true,
+      "modifiers": {
+        "required": [],
+        "optional": []
+      }
+    },
+    {
+      "id": "45d3cb33-e4a5-40f5-bc66-a4abd2b5eaee",
+      "name": "Israeli Salad 1/2 Lb",
+      "category": "Appetizers Sides",
+      "base_price": 4.55,
+      "description": "",
+      "available": true,
+      "modifiers": {
+        "required": [],
+        "optional": []
+      }
+    },
+    {
+      "id": "2aee7a83-666e-4639-a160-367f496fef68",
+      "name": "Sliced Vegetables 1/2 Lb",
+      "category": "Appetizers Sides",
+      "base_price": 4.55,
+      "description": "",
+      "available": true,
+      "modifiers": {
+        "required": [],
+        "optional": [
+          {
+            "group_name": "Sliced Vegetables Modifier",
+            "options": [
+              {
+                "id": "fbc6437e-7c28-4b9b-8e79-ca9390b0e823",
+                "name": "Tomatoes",
+                "price": 0
+              },
+              {
+                "id": "8c73a67f-66a9-4ef7-9a81-d1f940c9ef50",
+                "name": "Cucumbers",
+                "price": 0
+              },
+              {
+                "id": "68c6fa60-c672-4c04-8889-32d4dafeda50",
+                "name": "Pickles",
+                "price": 0
+              },
+              {
+                "id": "b56c03ad-8ac6-49f6-8681-b8359fd095de",
+                "name": "Onions",
+                "price": 0
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "note": "This is a sample of 5 items from the menu for inspection"
+}

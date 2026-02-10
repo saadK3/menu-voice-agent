@@ -1,0 +1,6 @@
+item_name,base_price,pos_id,available,description,modifiers_json
+Caramel Donut (Non-Dairy),3.90,dbb69f64-7534-48ad-a13b-2847732c0291,Yes,,[]
+Chocolate Donut (Non-Dairy),3.25,f20abb2c-efc6-4942-947b-23c8f796ea5f,Yes,,[]
+Custard Donut (Non-Dairy),3.89,5653b3e5-0cf2-4784-976c-9b98f5566527,Yes,,[]
+Donut,3.25,f1d88813-7c4a-4235-abeb-b3ab98187a08,Yes,"Please note if we do not have the chosen flavor you ordered, we will try to contact you. If we can't reach you, we will send what is available.","[{""group_name"": ""Donut Modifier"", ""required"": false, ""modifiers"": [{""name"": ""Donut"", ""modifier_id"": ""a87a2b7d-fe34-4c1a-8fd8-1d9616f57bba"", ""price"": null}, {""name"": ""Hot Bagel Donut"", ""modifier_id"": ""35c10352-1ebd-4e5d-86f1-62568fe82d8a"", ""price"": 0.5}]}]"
+Jelly Donut (Non-Dairy),3.79,e8621067-8e62-4043-bef4-51863e4dda71,Yes,,[]

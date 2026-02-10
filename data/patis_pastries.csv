@@ -1,0 +1,10 @@
+item_name,base_price,pos_id,available,description,modifiers_json
+Cheese Danish,7.48,b886055c-c4b0-46e6-975b-442f45e0ad6a,Yes,Please note:,[]
+Chocolate Toffee Walnut Cookie,7.48,d445c8d3-e096-407b-acca-ffc09a396608,Yes,Please note:,[]
+Croissant,6.44,6193f56a-5be3-461b-8039-a59b0c8089b2,Yes,Please note:,"[{""group_name"": ""Croissant Flavor"", ""required"": true, ""modifiers"": [{""name"": ""Almond"", ""modifier_id"": ""001c5029-fddc-4e56-a02e-3154bac60365"", ""price"": 1.0}, {""name"": ""Chocolate"", ""modifier_id"": ""4e737724-ef86-4ecc-ac27-26bfa3450e62"", ""price"": 0.3}, {""name"": ""Plain"", ""modifier_id"": ""f793285f-f49f-495a-820a-b8d68035701f"", ""price"": null}, {""name"": ""Cheese"", ""modifier_id"": ""eeb2b0b4-8923-499d-82f8-1e874e97db68"", ""price"": 1.55}]}]"
+Cronut,6.50,9a463827-5fbd-492a-b0e7-30dc3ceb2a70,Yes,,[]
+Dulce De Leche Kouinn Amann,8.13,139dd26b-9e76-422c-9cae-c552c6dd1ecc,Yes,Please note:,[]
+Honey Kouinn Amann,7.74,6889e192-869c-4314-94d5-f30fc3eaccca,Yes,Please note:,[]
+Madeleine,2.28,2d4fbf4d-25a6-48b1-9664-bc72c239cbe5,Yes,Please note:,"[{""group_name"": ""Madeleine Flavor"", ""required"": false, ""modifiers"": [{""name"": ""Almond"", ""modifier_id"": ""f29d8312-6472-4fe2-be0b-8619dae5fb80"", ""price"": 1.75}, {""name"": ""Pistachio"", ""modifier_id"": ""148a2f93-e377-4b57-a117-25e2ee2d88b7"", ""price"": 2.0}]}]"
+Pecan Pie Sticky Bun,8.78,e91ea873-0ab4-4104-8723-4406ac175c4e,Yes,Please note: Dairy,[]
+Tart,9.04,04b692db-722f-4ea7-ade9-4fc1a3569a57,Yes,Please note:,"[{""group_name"": ""Tart Flavor"", ""required"": false, ""modifiers"": [{""name"": ""Chocolate Caramel"", ""modifier_id"": ""6ca7364f-15a3-4943-bd87-411155223384"", ""price"": 6.95}, {""name"": ""Lemon Strawberry"", ""modifier_id"": ""7a293777-f6c1-4d70-8bae-c7adaabd58c1"", ""price"": 6.95}]}]"
