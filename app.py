@@ -196,8 +196,20 @@ def get_items_by_category():
 @app.route('/api/search_menu', methods=['POST'])
 def search_menu():
     """Search for menu items (prevents hallucinations)"""
-    data = request.json
-    query = data.get('query', '').strip()
+    # Try to get query from multiple sources (JSON, form data, or query params)
+    query = None
+
+    # Try JSON body first
+    if request.is_json and request.json:
+        query = request.json.get('query', '').strip()
+
+    # Try form data
+    if not query and request.form:
+        query = request.form.get('query', '').strip()
+
+    # Try query parameters as fallback
+    if not query:
+        query = request.args.get('query', '').strip()
 
     if not query:
         return jsonify({
