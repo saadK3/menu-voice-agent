@@ -62,9 +62,9 @@ def similarity_score(str1, str2):
     """Calculate similarity between two strings (0-1)"""
     return SequenceMatcher(None, str1.lower(), str2.lower()).ratio()
 
-def search_items(query, threshold=0.6):
+def search_items(query, threshold=0.75):
     """Search for items by name with fuzzy matching"""
-    query_lower = query.lower()
+    query_lower = query.lower().strip()
     results = []
 
     for item_id, item in menu_data['items'].items():
@@ -80,8 +80,8 @@ def search_items(query, threshold=0.6):
                 'match_type': 'exact',
                 'score': 1.0
             })
-        # Contains match
-        elif query_lower in item_name_lower or item_name_lower in query_lower:
+        # Word-based match (all query words must be in item name)
+        elif all(word in item_name_lower for word in query_lower.split()):
             results.append({
                 'id': item_id,
                 'name': item['name'],
@@ -89,6 +89,16 @@ def search_items(query, threshold=0.6):
                 'price': item['base_price'],
                 'match_type': 'partial',
                 'score': 0.9
+            })
+        # Contains match (query is substring of item name)
+        elif query_lower in item_name_lower:
+            results.append({
+                'id': item_id,
+                'name': item['name'],
+                'category': item['category'],
+                'price': item['base_price'],
+                'match_type': 'partial',
+                'score': 0.85
             })
         # Fuzzy match
         else:
@@ -195,8 +205,8 @@ def search_menu():
             'error': 'Search query is required'
         }), 400
 
-    # Search
-    results = search_items(query, threshold=0.6)
+    # Search with stricter threshold
+    results = search_items(query, threshold=0.75)
 
     if not results:
         return jsonify({
