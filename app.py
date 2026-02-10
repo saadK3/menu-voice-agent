@@ -196,6 +196,19 @@ def get_items_by_category():
 @app.route('/api/search_menu', methods=['POST'])
 def search_menu():
     """Search for menu items (prevents hallucinations)"""
+    # DEBUG: Log everything we receive
+    print("=" * 80)
+    print("SEARCH_MENU REQUEST DEBUG")
+    print("=" * 80)
+    print(f"Content-Type: {request.content_type}")
+    print(f"Is JSON: {request.is_json}")
+    print(f"Request Data (raw): {request.data}")
+    print(f"Request JSON: {request.json if request.is_json else 'N/A'}")
+    print(f"Request Form: {dict(request.form)}")
+    print(f"Request Args: {dict(request.args)}")
+    print(f"Request Headers: {dict(request.headers)}")
+    print("=" * 80)
+
     # Try to get query from multiple sources (JSON, form data, or query params)
     query = None
 
@@ -210,6 +223,9 @@ def search_menu():
     # Try query parameters as fallback
     if not query:
         query = request.args.get('query', '').strip()
+
+    print(f"EXTRACTED QUERY: '{query}'")
+    print("=" * 80)
 
     if not query:
         return jsonify({
